@@ -6,6 +6,8 @@ import getopt, sys, os
 
 from misc import onError, usage
 
+from handleSub import readFile
+
 ##### handle arguments #####
 try:
     myopts, args = getopt.getopt(sys.argv[1:], 'i:vh' ,
@@ -20,6 +22,7 @@ if len(sys.argv) == 1:  # no options passed
     onError(2, "No options given")
     
 inFile = ""
+verbose = False
     
 for option, argument in myopts:
     if option in ('-i', '--infile'):
@@ -36,3 +39,4 @@ if not os.path.isfile(inFile):
 elif os.path.islink(inFile):
     onError(5, "%s is a link" % inFile)
     
+readFile(inFile, verbose)

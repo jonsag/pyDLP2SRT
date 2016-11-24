@@ -20,6 +20,9 @@ def onError(errorCode, extra):
     if errorCode in (1, 2, 3,4 ,5):
         printError(extra)
         usage(errorCode)
+    elif errorCode == 6:
+        printError(extra)
+        sys.exit(errorCode)
     else:
         printError("Unkown")
         sys.exit(errorCode)
